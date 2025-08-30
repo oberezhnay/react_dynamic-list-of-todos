@@ -75,7 +75,9 @@ export const TodoModal: React.FC<Props> = ({ todo, onModalClose }) => {
       {!loading && errorMessage && (
         <div className="modal-card">
           <div className="modal-card-body">
-            <div className="notification is-danger" data-cy="error">{errorMessage}</div>
+            <div className="notification is-danger" data-cy="error">
+              {errorMessage}
+            </div>
           </div>
         </div>
       )}

@@ -31,19 +31,28 @@ export const App: React.FC = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const visibleTodos = todos.filter(todo => {
-    if (selectedFilter === 'active') return !todo.completed;
-    if (selectedFilter === 'completed') return todo.completed;
-    return true
-  })
-  .filter(todo => todo.title.toLowerCase().includes(query.toLowerCase()));
+  const visibleTodos = todos
+    .filter(todo => {
+      if (selectedFilter === 'active') {
+        return !todo.completed;
+      }
+
+      if (selectedFilter === 'completed') {
+        return todo.completed;
+      }
+
+      return true;
+    })
+    .filter(todo => todo.title.toLowerCase().includes(query.toLowerCase()));
 
   return (
     <>
       <div className="section">
         <div className="container">
           <div className="box">
-            <h1 className="title" data-cy="title">Todos:</h1>
+            <h1 className="title" data-cy="title">
+              Todos:
+            </h1>
 
             <div className="block">
               <TodoFilter
@@ -66,7 +75,9 @@ export const App: React.FC = () => {
               )}
 
               {!loading && errorMessage && (
-                <div className="notification is-danger" data-cy="error">{errorMessage}</div>
+                <div className="notification is-danger" data-cy="error">
+                  {errorMessage}
+                </div>
               )}
             </div>
           </div>

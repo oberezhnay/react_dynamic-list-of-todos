@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { Todo } from '../../types/Todo';
+import React from 'react';
 
 type Props = {
   query: string;
   filter: 'all' | 'active' | 'completed';
-  onQueryChange: (value:string) => void;
+  onQueryChange: (value: string) => void;
   onFilterChange: (value: 'all' | 'active' | 'completed') => void;
 };
 
@@ -12,16 +11,17 @@ export const TodoFilter: React.FC<Props> = ({
   query,
   filter,
   onQueryChange,
-  onFilterChange
+  onFilterChange,
 }) => {
-
   return (
     <form className="field has-addons">
       <p className="control">
         <span className="select">
           <select
             data-cy="statusSelect"
-            onChange={event => onFilterChange(event.target.value as Props['filter'])}
+            onChange={event =>
+              onFilterChange(event.target.value as Props['filter'])
+            }
             value={filter}
           >
             <option value="all">All</option>
@@ -48,10 +48,10 @@ export const TodoFilter: React.FC<Props> = ({
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           {query && (
             <button
-            data-cy="clearSearchButton"
-            type="button"
-            className="delete"
-            onClick={() => onQueryChange('')}
+              data-cy="clearSearchButton"
+              type="button"
+              className="delete"
+              onClick={() => onQueryChange('')}
             />
           )}
         </span>
